@@ -77,3 +77,25 @@ document.addEventListener("DOMContentLoaded", () => {
   attachLogout();
   renderStockTable();
 });
+
+function renderStockTable() {
+  const currentUser = getCurrentUser();
+  if (!currentUser || currentUser.role !== "seller") return;
+
+  const allProducts = JSON.parse(localStorage.getItem("products")) || [];
+  // Filter products by seller email
+  const sellerProducts = allProducts.filter(
+    (p) => p.seller === currentUser.email,
+  );
+
+  // ... rest of rendering using sellerProducts instead of allProducts
+}
+
+// In stock-management.js, wrap the generated table:
+const stockHTML = `
+  <div class="stock-table-container">
+    <table class="stock-table">
+      <!-- your table content -->
+    </table>
+  </div>
+`;

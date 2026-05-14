@@ -1,75 +1,119 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Add Product | Seller</title>
-  <!-- Correct CSS files -->
-  <link rel="stylesheet" href="../css/common.css">
-  <link rel="stylesheet" href="../css/dashboard.css">
-  <link rel="stylesheet" href="../css/seller-dashboard.css">
-</head>
-<body>
-  <div class="dashboard-wrapper">
-    <!-- Sidebar (consistent with other seller pages) -->
-    <aside class="sidebar">
-      <h3>🏪 Seller Panel</h3>
-      <ul>
-        <li><a href="seller-profile.html">👤 Profile</a></li>
-        <li><a href="seller-add-item.html">➕ Add Item</a></li>
-        <li><a href="stock-management.html">📦 Manage Stock</a></li>
-        <li><a href="profit.html">💰 Profit Overview</a></li>
-        <li><a href="../index.html" id="logoutSeller">🚪 Logout</a></li>
-      </ul>
-    </aside>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Add Product | Seller</title>
+    <!-- Correct CSS files -->
+    <link rel="stylesheet" href="../css/common.css" />
+    <link rel="stylesheet" href="../css/dashboard.css" />
+    <link rel="stylesheet" href="../css/seller-dashboard.css" />
+  </head>
+  <body>
+    <div class="dashboard-wrapper">
+      <!-- Sidebar (consistent with other seller pages) -->
+      <aside class="sidebar">
+        <h3>Seller Panel</h3>
+        <ul>
+          <li>
+            <a href="seller-profile.html"
+              ><img src="../assets/user.png" width="30" height="30" /><span
+                >Profile</span
+              ></a
+            >
+          </li>
+          <li>
+            <a href="seller-add-item.html"
+              ><img src="../assets/queue.png" width="30" height="30" />
+              <span>Add Item</span></a
+            >
+          </li>
+          <li>
+            <a href="stock-management.html"
+              ><img src="../assets/inventory.png" width="30" height="30" />
+              <span>Manage Stock</span></a
+            >
+          </li>
+          <li>
+            <a href="profit.html"
+              ><img src="../assets/coins.png" width="30" height="30" />
+              <span>Revenue</span></a
+            >
+          </li>
+          <li>
+            <a href="#" id="logoutSeller"
+              ><img src="../assets/logout.png" width="30" height="30" /><span
+                >Logout</span
+              ></a
+            >
+          </li>
+        </ul>
+      </aside>
 
-    <main class="dashboard-main">
-      <div class="product-form-card">
-        <h2>➕ Add New Product</h2>
-        <form id="addProductForm">
-          <div class="form-group">
-            <label>Product Name</label>
-            <input type="text" id="prodName" required>
-          </div>
-          <div class="form-group">
-            <label>Category</label>
-            <select id="prodCategory">
-              <option value="stationary">Stationary</option>
-              <option value="gadgets">Gadgets</option>
-              <option value="accessories">Accessories</option>
-              <option value="study">Study Materials</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label>Price (₹)</label>
-            <input type="number" id="prodPrice" required>
-          </div>
-          <div class="form-group">
-            <label>Stock Quantity</label>
-            <input type="number" id="prodStock" required>
-          </div>
-          <div class="form-group">
-            <label>Description</label>
-            <textarea id="prodDesc" rows="3"></textarea>
-          </div>
-          <div class="form-group">
-            <label>Image URL</label>
-            <input type="text" id="prodImage" value="https://via.placeholder.com/150">
-          </div>
-          <button type="submit" class="btn-primary">➕ Add Product</button>
-        </form>
-      </div>
-    </main>
-  </div>
+      <main class="dashboard-main">
+        <div class="product-form-card">
+          <h2>Add New Product</h2>
+          <form id="addProductForm">
+            <div class="form-group">
+              <label>Product Name</label>
+              <input type="text" id="prodName" required />
+            </div>
+            <div class="form-group">
+              <label>Category</label>
+              <select id="prodCategory">
+                <option value="stationery">Stationery</option>
+                <option value="gadgets">Gadgets</option>
+                <option value="accessories">Accessories</option>
+                <option value="study">Study Materials</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Price (₹)</label>
+              <input type="number" id="prodPrice" required />
+            </div>
+            <div class="form-group">
+              <label>Stock Quantity</label>
+              <input type="number" id="prodStock" required />
+            </div>
+            <div class="form-group">
+              <label>Description</label>
+              <textarea id="prodDesc" rows="3"></textarea>
+            </div>
+            <div class="form-group">
+              <label>Image URL</label>
+              <input
+                type="text"
+                id="prodImage"
+                value="https://via.placeholder.com/150"
+              />
+            </div>
+            <button type="submit" class="btn-primary">Add Product</button>
+          </form>
+        </div>
+      </main>
+    </div>
 
-  <script src="../js/common.js"></script>
-  <script src="../js/seller-add-item.js"></script>
-  <script>
-    // Logout functionality
-    document.getElementById('logoutSeller')?.addEventListener('click', () => {
-      logout();
-      window.location.href = '../index.html';
-    });
-  </script>
-</body>
+    <script src="../js/common.js"></script>
+    <script src="../js/seller-add-item.js"></script>
+    <script>
+      // Ensure DOM is fully loaded before attaching event
+      document.addEventListener("DOMContentLoaded", function () {
+        const logoutBtn = document.getElementById("logoutSeller");
+        if (logoutBtn) {
+          logoutBtn.addEventListener("click", function (e) {
+            e.preventDefault(); // Stop the link from navigating
+            if (typeof logout === "function") {
+              logout(); // Clear session/localStorage
+            } else {
+              console.warn("logout function not found, clearing manually");
+              localStorage.removeItem("currentUser");
+              sessionStorage.removeItem("currentUser");
+            }
+            window.location.href = "../index.html";
+          });
+        }
+      });
+    </script>
+  </body>
 </html>
+

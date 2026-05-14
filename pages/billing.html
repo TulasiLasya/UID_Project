@@ -8,26 +8,75 @@
     <link rel="stylesheet" href="../css/billing.css" />
   </head>
   <body>
-    <nav class="navbar">
-      <div class="nav-container">
-        <a href="../index.html" class="logo">📚 StudentEssentials</a>
-        <a href="dashboard.html" class="dashboard-link">Dashboard</a>
-      </div>
-    </nav>
-
-    <div class="billing-wrapper">
-      <div class="billing-back">
-        <a href="dashboard.html">&larr;back</a>
-      </div>
-      <div class="billing-card">
-        <h2>Billing Summary</h2>
-        <div id="billingItems" class="billing-items"></div>
-        <div class="billing-total">
-          <strong>Total Amount: ₹<span id="billingTotal">0</span></strong>
-        </div>
-        <form id="billingForm">
-          <label>Card Number</label>
-          <input type="text" placeholder="1234 5678 9012 3456" required />
+    <div class="dashboard-wrapper">
+      <aside class="sidebar">
+        <h3>
+          <img src="../assets/more.png" width="30" height="30" />
+          <span>Menu</span>
+        </h3>
+        <ul>
+          <li>
+            <a href="dashboard.html"
+              ><img src="../assets/storefront.png" width="30" height="30" />
+              <span>Shop</span></a
+            >
+          </li>
+          <li>
+            <a href="profile.html"
+              ><img src="../assets/user.png" width="30" height="30" /><span>
+                Profile</span
+              ></a
+            >
+          </li>
+          <li>
+            <a href="cart.html"
+              ><img
+                src="../assets/grocery-store.png"
+                width="30"
+                height="30"
+              /><span>Cart</span></a
+            >
+          </li>
+          <li>
+            <a href="billing.html"
+              ><img src="../assets/bill.png" width="30" height="30" /><span>
+                Billing</span
+              ></a
+            >
+          </li>
+          <li>
+            <a href="feedback.html"
+              ><img src="../assets/review.png" width="30" height="30" /><span>
+                Feedback</span
+              ></a
+            >
+          </li>
+          <li>
+            <a href="query.html">
+              <img src="../assets/question.png" width="30" height="30" /><span
+                >Query</span
+              ></a
+            >
+          </li>
+          <li>
+            <a href="index.html" id="logoutBtn"
+              ><img src="../assets/logout.png" width="30" height="30" />
+              <span>Logout</span></a
+            >
+          </li>
+        </ul>
+      </aside>
+      <main class="dashboard-main">
+        <div class="billing-wrapper">
+          <div class="billing-card">
+            <h2>Billing Summary</h2>
+            <div id="billingItems" class="billing-items"></div>
+            <div class="billing-total">
+              <strong>Total Amount: ₹<span id="billingTotal">0</span></strong>
+            </div>
+            <form id="billingForm">
+              <label>Card Number</label>
+              <input type="text" placeholder="1234 5678 9012 3456" required />
 
           <label>Expiry Date</label>
           <input type="month" required />
