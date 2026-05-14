@@ -2,30 +2,42 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=yes"
+    />
     <title>Billing | Student Essentials</title>
     <link rel="stylesheet" href="../css/common.css" />
+    <link rel="stylesheet" href="../css/dashboard.css" />
     <link rel="stylesheet" href="../css/billing.css" />
   </head>
   <body>
     <div class="dashboard-wrapper">
+      <!-- Sidebar - consistent with other user pages -->
       <aside class="sidebar">
         <h3>
-          <img src="../assets/more.png" width="30" height="30" />
+          <img src="../assets/more.png" width="30" height="30" alt="menu" />
           <span>Menu</span>
         </h3>
         <ul>
           <li>
             <a href="dashboard.html"
-              ><img src="../assets/storefront.png" width="30" height="30" />
-              <span>Shop</span></a
+              ><img
+                src="../assets/storefront.png"
+                width="30"
+                height="30"
+                alt="shop"
+              /><span>Shop</span></a
             >
           </li>
           <li>
             <a href="profile.html"
-              ><img src="../assets/user.png" width="30" height="30" /><span>
-                Profile</span
-              ></a
+              ><img
+                src="../assets/user.png"
+                width="30"
+                height="30"
+                alt="profile"
+              /><span>Profile</span></a
             >
           </li>
           <li>
@@ -34,62 +46,117 @@
                 src="../assets/grocery-store.png"
                 width="30"
                 height="30"
+                alt="cart"
               /><span>Cart</span></a
             >
           </li>
           <li>
             <a href="billing.html"
-              ><img src="../assets/bill.png" width="30" height="30" /><span>
-                Billing</span
-              ></a
+              ><img
+                src="../assets/bill.png"
+                width="30"
+                height="30"
+                alt="bill"
+              /><span>Billing</span></a
             >
           </li>
           <li>
             <a href="feedback.html"
-              ><img src="../assets/review.png" width="30" height="30" /><span>
-                Feedback</span
-              ></a
+              ><img
+                src="../assets/review.png"
+                width="30"
+                height="30"
+                alt="feedback"
+              /><span>Feedback</span></a
             >
           </li>
           <li>
-            <a href="query.html">
-              <img src="../assets/question.png" width="30" height="30" /><span
-                >Query</span
-              ></a
+            <a href="query.html"
+              ><img
+                src="../assets/question.png"
+                width="30"
+                height="30"
+                alt="query"
+              /><span>Query</span></a
             >
           </li>
           <li>
-            <a href="index.html" id="logoutBtn"
-              ><img src="../assets/logout.png" width="30" height="30" />
-              <span>Logout</span></a
+            <a href="#" id="logoutBtn"
+              ><img
+                src="../assets/logout.png"
+                width="30"
+                height="30"
+                alt="logout"
+              /><span>Logout</span></a
             >
           </li>
         </ul>
       </aside>
+
       <main class="dashboard-main">
         <div class="billing-wrapper">
           <div class="billing-card">
             <h2>Billing Summary</h2>
-            <div id="billingItems" class="billing-items"></div>
+            <div id="billingItems" class="billing-items">
+              <!-- Dynamic items will be injected here -->
+              <div class="empty-cart-message">
+                Your cart is empty. Add items to proceed.
+              </div>
+            </div>
             <div class="billing-total">
               <strong>Total Amount: ₹<span id="billingTotal">0</span></strong>
             </div>
             <form id="billingForm">
-              <label>Card Number</label>
-              <input type="text" placeholder="1234 5678 9012 3456" required />
-
-          <label>Expiry Date</label>
-          <input type="month" required />
-
-          <label>CVV</label>
-          <input type="password" maxlength="3" required />
-
-          <button type="submit" class="btn-primary">Pay Now</button>
-        </form>
-      </div>
+              <div class="form-group">
+                <label>Card Number</label>
+                <input
+                  type="text"
+                  placeholder="1234 5678 9012 3456"
+                  required
+                  pattern="[0-9\s]{13,19}"
+                />
+              </div>
+              <div class="form-row">
+                <div class="form-group half">
+                  <label>Expiry Date</label>
+                  <input type="month" required />
+                </div>
+                <div class="form-group half">
+                  <label>CVV</label>
+                  <input
+                    type="password"
+                    maxlength="3"
+                    required
+                    pattern="[0-9]{3}"
+                  />
+                </div>
+              </div>
+              <button type="submit" class="btn-primary">Pay Now</button>
+            </form>
+          </div>
+        </div>
+      </main>
     </div>
 
     <script src="../js/common.js"></script>
     <script src="../js/billing.js"></script>
+    <script>
+      // Fix logout: prevent default link behavior
+      document.addEventListener("DOMContentLoaded", function () {
+        const logoutBtn = document.getElementById("logoutBtn");
+        if (logoutBtn) {
+          logoutBtn.addEventListener("click", function (e) {
+            e.preventDefault();
+            if (typeof logout === "function") {
+              logout();
+            } else {
+              localStorage.removeItem("currentUser");
+              sessionStorage.removeItem("currentUser");
+            }
+            window.location.href = "../index.html";
+          });
+        }
+      });
+    </script>
   </body>
 </html>

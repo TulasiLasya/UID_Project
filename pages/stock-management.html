@@ -2,11 +2,15 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Stock Management</title>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=yes"
+    />
+    <title>Stock Management | Seller</title>
     <link rel="stylesheet" href="../css/common.css" />
     <link rel="stylesheet" href="../css/seller.css" />
     <link rel="stylesheet" href="../css/seller-dashboard.css" />
+    <link rel="stylesheet" href="../css/stock.css" />
   </head>
   <body>
     <div class="dashboard-wrapper">
@@ -14,26 +18,26 @@
         <h3>Seller Panel</h3>
         <ul>
           <li>
-            <a href="seller-profile.html"
+            <a href="seller-profile.html" class="nav-link" data-page="profile"
               ><img src="../assets/user.png" width="30" height="30" /><span
                 >Profile</span
               ></a
             >
           </li>
           <li>
-            <a href="seller-add-item.html"
+            <a href="seller-add-item.html" class="nav-link" data-page="additem"
               ><img src="../assets/queue.png" width="30" height="30" />
               <span>Add Item</span></a
             >
           </li>
           <li>
-            <a href="stock-management.html"
+            <a href="stock-management.html" class="nav-link" data-page="stock"
               ><img src="../assets/inventory.png" width="30" height="30" />
               <span>Manage Stock</span></a
             >
           </li>
           <li>
-            <a href="profit.html"
+            <a href="profit.html" class="nav-link" data-page="profit"
               ><img src="../assets/coins.png" width="30" height="30" />
               <span>Revenue</span></a
             >
@@ -49,13 +53,43 @@
       </aside>
       <main class="dashboard-main">
         <div class="top-bar">
-          <h2>📦 Stock Management</h2>
+          <h2>Stock Management</h2>
         </div>
         <div id="stockTable"></div>
       </main>
     </div>
     <script src="../js/common.js"></script>
     <script src="../js/stock-management.js"></script>
+    <script>
+      // Active menu highlighting based on current page
+      document.addEventListener("DOMContentLoaded", function () {
+        const currentPage = window.location.pathname.split("/").pop();
+        const navLinks = document.querySelectorAll(".sidebar .nav-link");
+
+        navLinks.forEach((link) => {
+          const href = link.getAttribute("href");
+          if (href === currentPage) {
+            link.classList.add("active");
+          } else {
+            link.classList.remove("active");
+          }
+        });
+
+        // Logout functionality
+        const logoutBtn = document.getElementById("logoutSeller");
+        if (logoutBtn) {
+          logoutBtn.addEventListener("click", function (e) {
+            e.preventDefault();
+            if (typeof logout === "function") {
+              logout();
+            } else {
+              localStorage.removeItem("currentUser");
+              sessionStorage.removeItem("currentUser");
+            }
+            window.location.href = "../index.html";
+          });
+        }
+      });
+    </script>
   </body>
 </html>
-

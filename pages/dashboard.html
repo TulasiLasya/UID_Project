@@ -66,7 +66,7 @@
             >
           </li>
           <li>
-            <a href="index.html" id="logoutBtn"
+            <a href="#" id="logoutBtn"
               ><img src="../assets/logout.png" width="30" height="30" />
               <span>Logout</span></a
             >
@@ -83,9 +83,11 @@
 
         <!-- Mini Cart Summary -->
         <div class="cart-summary-card">
-          <span
-            >🛒 Cart items: <strong id="cartItemCount">0</strong> | Total:
-            ₹<strong id="cartTotalPreview">0</strong></span
+          <span></span>
+            Cart items: <strong id="cartItemCount">0</strong> | Total: ₹<strong
+              id="cartTotalPreview"
+              >0</strong
+            ></span
           >
           <a href="cart.html">View Cart & Checkout</a>
         </div>
@@ -215,7 +217,6 @@
                 ) : (
                   filteredProducts.map((product) => (
                     <div key={product.id} className="product-card">
-                     
                       <img
                         src={product.image}
                         alt={product.name}
@@ -240,6 +241,7 @@
                         <div className="product-desc">
                           {product.description}
                         </div>
+                        <br/>
                         <button
                           className="add-to-cart-dash"
                           onClick={() => handleAddToCart(product)}
@@ -272,5 +274,26 @@
         }
       }
     </script>
+    <script>
+  // Fix logout: target the correct button id
+  document.addEventListener("DOMContentLoaded", function () {
+    const logoutBtn = document.getElementById("logoutBtn"); // Changed from "logoutSeller"
+    if (logoutBtn) {
+      logoutBtn.addEventListener("click", function (e) {
+        e.preventDefault(); // Stop the link from navigating
+        if (typeof logout === "function") {
+          logout(); // Clear session/localStorage
+        } else {
+          console.warn("logout function not found, clearing manually");
+          localStorage.removeItem("currentUser");
+          sessionStorage.removeItem("currentUser");
+        }
+        window.location.href = "../index.html";
+      });
+    } else {
+      console.error("Logout button not found with id 'logoutBtn'");
+    }
+  });
+</script>
   </body>
 </html>

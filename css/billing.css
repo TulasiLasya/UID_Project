@@ -1,15 +1,21 @@
-/* Billing Page Styles */
+/* billing.css - responsive and fixed layout */
 .billing-wrapper {
   max-width: 700px;
-  margin: 2rem auto;
+  margin: 1rem auto;
   padding: 0 1rem;
 }
 
 .billing-card {
   background: white;
   border-radius: 28px;
-  padding: 2rem;
+  padding: 1.5rem;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.billing-card h2 {
+  color: #c07a53;
+  margin-bottom: 1rem;
+  font-size: 1.6rem;
 }
 
 .billing-items {
@@ -17,33 +23,164 @@
   padding: 1rem;
   background: #faf3e7;
   border-radius: 20px;
+  max-height: 300px;
+  overflow-y: auto;
 }
 
 .billing-item {
   display: flex;
   justify-content: space-between;
-  padding: 0.5rem 0;
+  padding: 0.75rem 0;
   border-bottom: 1px dashed #c8b39a;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.billing-item .item-name {
+  font-weight: 500;
+  flex: 2;
+}
+
+.billing-item .item-price {
+  font-weight: 600;
+  color: #2b2621;
+}
+
+.empty-cart-message {
+  text-align: center;
+  padding: 2rem;
+  color: #999;
 }
 
 .billing-total {
   font-size: 1.3rem;
   text-align: right;
   margin: 1rem 0;
-  padding-top: 0.5rem;
+  padding-top: 0.75rem;
   border-top: 2px solid #c07a53;
+}
+
+#billingForm .form-group {
+  margin-bottom: 1rem;
+}
+
+#billingForm label {
+  display: block;
+  margin-bottom: 0.4rem;
+  font-weight: 500;
+  color: #2b2621;
 }
 
 #billingForm input {
   width: 100%;
   padding: 12px;
-  margin: 8px 0;
   border: 1px solid #c8b39a;
   border-radius: 16px;
+  font-size: 1rem;
+  transition: border 0.2s;
+  box-sizing: border-box;
+}
+
+#billingForm input:focus {
+  outline: none;
+  border-color: #c07a53;
+  box-shadow: 0 0 0 3px rgba(192, 122, 83, 0.1);
+}
+
+.form-row {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.form-group.half {
+  flex: 1;
+  min-width: 120px;
 }
 
 #billingForm .btn-primary {
   width: 100%;
   margin-top: 1rem;
+  padding: 14px;
   font-size: 1.1rem;
+  background: #c07a53;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+#billingForm .btn-primary:hover {
+  background: #9b5e3f;
+}
+
+/* ========== RESPONSIVE (Mobile) ========== */
+@media (max-width: 768px) {
+  .billing-wrapper {
+    margin: 0.5rem auto;
+    padding: 0 0.75rem;
+  }
+
+  .billing-card {
+    padding: 1.2rem;
+    border-radius: 20px;
+  }
+
+  .billing-card h2 {
+    font-size: 1.4rem;
+    text-align: center;
+  }
+
+  .billing-items {
+    padding: 0.75rem;
+    max-height: 250px;
+  }
+
+  .billing-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.25rem;
+    padding: 0.6rem 0;
+  }
+
+  .billing-item .item-price {
+    align-self: flex-end;
+  }
+
+  .billing-total {
+    font-size: 1.2rem;
+    text-align: center;
+  }
+
+  .form-row {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .form-group.half {
+    min-width: auto;
+  }
+
+  #billingForm input {
+    padding: 10px;
+    font-size: 16px; /* prevents zoom on focus */
+  }
+
+  #billingForm .btn-primary {
+    padding: 12px;
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .billing-card {
+    padding: 1rem;
+  }
+
+  .billing-items {
+    margin: 1rem 0;
+  }
+
+  .billing-total {
+    font-size: 1.1rem;
+  }
 }

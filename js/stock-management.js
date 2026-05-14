@@ -99,3 +99,4 @@ const stockHTML = `
     </table>
   </div>
 `;
+document.getElementById('stockTable').innerHTML = stockHTML;
