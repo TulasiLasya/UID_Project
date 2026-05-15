@@ -9,7 +9,7 @@ const sampleProducts = [
     price: 99,
     stock: 50,
     description: "200 pages, hardcover",
-    image: "https://picsum.photos/id/20/300/200",
+    image: "../assets/notebook.png",
     seller: "seller@example.com",
   },
   {
@@ -19,7 +19,7 @@ const sampleProducts = [
     price: 499,
     stock: 20,
     description: "Ergonomic, 2.4GHz",
-    image: "https://picsum.photos/id/26/300/200",
+    image: "../assets/wirelessMouse.png",
     seller: "seller@example.com",
   },
   {
@@ -29,7 +29,7 @@ const sampleProducts = [
     price: 799,
     stock: 15,
     description: "Aluminum foldable",
-    image: "https://picsum.photos/id/0/300/200",
+    image: "../assets/laptopStand.png",
     seller: "seller@example.com",
   },
   {
@@ -39,7 +39,7 @@ const sampleProducts = [
     price: 450,
     stock: 10,
     description: "For engineering students",
-    image: "https://picsum.photos/id/24/300/200",
+    image: "../assets/calculus.png",
     seller: "seller@example.com",
   },
   {
@@ -49,7 +49,7 @@ const sampleProducts = [
     price: 49,
     stock: 100,
     description: "Smooth writing",
-    image: "https://picsum.photos/id/21/300/200",
+    image: "../assets/penSet.png",
     seller: "seller@example.com",
   },
   {
@@ -59,10 +59,10 @@ const sampleProducts = [
     price: 1299,
     stock: 8,
     description: "7-in-1 adapter",
-    image: "https://picsum.photos/id/77/300/200",
+    image: "../assets/usbC.png",
     seller: "seller@example.com",
   },
-]; 
+];
 // Load products from localStorage or use sample
 let products = JSON.parse(localStorage.getItem("products")) || sampleProducts;
 
@@ -264,7 +264,7 @@ function renderProductGrid(category = "all") {
     .map(
       (product) => `
     <div class="product-card">
-      <img src="${product.image}" alt="${product.name}">
+      <img src="${product.image}" alt="${product.name}" style="object-fit: contain">
       <div class="product-info">
         <div class="product-title">${product.name}</div>
         <div class="product-price">₹${product.price}</div>

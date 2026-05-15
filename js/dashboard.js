@@ -157,7 +157,7 @@ document.addEventListener("DOMContentLoaded", () => {
     `Hello, ${user.name}! Start shopping.`;
   updateCartPreview();
   renderDashboardProducts();
-  renderMyOrders(); // <-- render orders
+  renderMyOrders();
   setupDashboardFilters();
   setupDashboardSearch();
   attachLogout();
