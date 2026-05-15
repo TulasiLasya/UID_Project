@@ -1,7 +1,9 @@
 # STUDENT ESSENTIAL STORE
 ## SCHOLAR MART
 ## Theme
-This project is a theme-based e-commerce website ("Scholar Mart") built as a modern UI dashboard and shopping experience. It includes pages for login, registration, shopping cart, billing, profile management, seller tools, and customer support. The design focuses on a clean, modern layout with responsive navigation, polished visual styling, and intuitive user workflows.
+This project is a e-commerce website ("Scholar Mart") built as a modern UI dashboard and shopping experience. It is a student centric website where students are buyers and can directly purchase items like stationary, gadgets and equipments required from seller.
+
+It includes pages for login, registration, shopping cart, billing, profile management, seller tools, and customer support. The design focuses on a clean, modern layout with responsive navigation, polished visual styling, and intuitive user workflows.
 
 ## Team Members and Contributions
 | Roll No          | Student Name      | Role        |
