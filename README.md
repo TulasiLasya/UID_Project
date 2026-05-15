@@ -32,7 +32,8 @@ It includes pages for login, registration, shopping cart, billing, profile manag
 - Responsive layouts and reusable card components for products.
 - Cart add/remove, stock indicators, visual product cards, and simple filtering UI.
 - Form templates for login, register, feedback, and queries.
-
+## WEBSITE LINK
+[Website Link](https://tulasilasya.github.io/UID_Project/)
 ## OUTPUT
 ### Default Page
 ![Default Page](Output/DefaultPage.png)
