@@ -32,5 +32,8 @@ This project is a theme-based e-commerce website ("Scholar Mart") built as a mod
 - Form templates for login, register, feedback, and queries.
 
 ## OUTPUT
-![Buyer Dashboard](Output/BuyerDefaultPage.png)
+### Default Page
 ![Default Page](Output/DefaultPage.png)
+### Buyer Dashboard
+![Buyer Dashboard](Output/BuyerDefaultPage.png)
+
