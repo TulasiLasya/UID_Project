@@ -16,6 +16,13 @@
   margin-bottom: 1.5rem;
 }
 
+.login-btn {
+  border-radius: 10px;
+  background-color: #c07a53;
+  padding: 10px;
+  border: none;
+  color: white;
+}
 /* Category Bar */
 .category-bar {
   display: flex;
