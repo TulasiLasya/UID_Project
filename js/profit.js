@@ -14,7 +14,7 @@ function renderProfit() {
   const sellerProducts = JSON.parse(localStorage.getItem("products")) || [];
   const sellerProductIds = sellerProducts.map((p) => p.id);
 
-  let totalProfit = 0;
+  let totalRevenue = 0;
   let salesBreakdownHtml = "<h3>Recent Sales</h3>";
 
   const relevantOrders = allOrders.filter((order) =>
@@ -33,7 +33,7 @@ function renderProfit() {
       if (sellerProductIds.includes(item.id)) return sum + item.price * item.quantity;
       return sum;
     }, 0);
-    totalProfit += orderTotal;
+    totalRevenue += orderTotal;
     salesBreakdownHtml += `
       <div class="sales-item">
         <span>Order #${order.id}</span>
@@ -42,7 +42,7 @@ function renderProfit() {
       </div>`;
   });
 
-  profitContainer.innerText = `₹${totalProfit}`;
+  profitContainer.innerText = `₹${totalRevenue}`;
   if (breakdownContainer) breakdownContainer.innerHTML = salesBreakdownHtml;
 }
 
