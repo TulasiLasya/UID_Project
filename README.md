@@ -11,7 +11,7 @@ It includes pages for login, registration, shopping cart, billing, profile manag
 | AM.SC.U4CSE25218 | Tulasi Lasya      | React and Frontend developer |
 | AM.SC.U4CSE25220 | Hansika L Chawla    | HTML and Accessibilty Lead |
 | AM.SC.U4CSE25236 | Nandana Jayakumar |  Styling Lead and Documentation|
-| AM.SC.U4CSE25230 | Lekshmi Nandana   |  Testing |
+| AM.SC.U4CSE25230 | Lekshmi Nandana   |  Observer and testing |
 
 ## Project Structure (repository root)
 - `index.html` — main landing page
