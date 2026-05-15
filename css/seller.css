@@ -110,3 +110,367 @@
   border: 1px solid #c8b39a;
   border-radius: 12px;
 }
+
+/* Responsive */
+@media (max-width: 768px) {
+  .seller-stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .stock-table th,
+  .stock-table td {
+    padding: 8px;
+    font-size: 0.85rem;
+  }
+
+  .edit-stock-btn,
+  .delete-product-btn {
+    padding: 4px 10px;
+    font-size: 0.75rem;
+  }
+
+  .product-form-card {
+    margin: 1rem;
+    padding: 1.5rem;
+  }
+}
+
+/* ============================================
+   MOBILE RESPONSIVE STYLES (max-width: 768px)
+   ============================================ */
+
+@media (max-width: 768px) {
+  /* Sidebar becomes horizontal/top bar instead of fixed left sidebar */
+  .dashboard-wrapper {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    position: static;
+    border-right: none;
+    border-bottom: 1px solid #e0d6cc;
+    padding: 0.75rem 1rem;
+  }
+
+  .sidebar h3 {
+    margin-bottom: 0.75rem;
+    padding-bottom: 0.5rem;
+    font-size: 1.2rem;
+    text-align: center;
+  }
+
+  .sidebar ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .sidebar ul li {
+    flex: 1 0 auto;
+    min-width: 80px;
+  }
+
+  .sidebar ul li a {
+    flex-direction: column;
+    align-items: center;
+    padding: 0.5rem 0.25rem;
+    text-align: center;
+    font-size: 0.7rem;
+    gap: 4px;
+  }
+
+  .sidebar ul li a img {
+    width: 20px;
+    height: 20px;
+    margin-right: 0;
+  }
+
+  .sidebar ul li a span {
+    display: block;
+  }
+
+  /* Main content area */
+  .dashboard-main {
+    padding: 1rem;
+  }
+
+  .dashboard-main h2 {
+    font-size: 1.4rem;
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+
+  /* Form card adjustments */
+  .product-form-card {
+    margin: 0;
+    padding: 1.25rem;
+    border-radius: 20px;
+  }
+
+  .product-form-card h2 {
+    font-size: 1.3rem;
+  }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    padding: 10px;
+    font-size: 16px; /* Prevents zoom on focus in iOS */
+  }
+
+  /* Stock table - horizontal scroll */
+  .stock-table-container {
+    padding: 0.5rem;
+    border-radius: 16px;
+  }
+
+  .stock-table {
+    min-width: 600px; /* Forces horizontal scroll on small screens */
+  }
+
+  .stock-table th,
+  .stock-table td {
+    padding: 10px 8px;
+    font-size: 0.8rem;
+    white-space: nowrap;
+  }
+
+  .stock-table td:first-child,
+  .stock-table th:first-child {
+    position: sticky;
+    left: 0;
+    background: white;
+    z-index: 1;
+  }
+
+  .stock-table th:first-child {
+    background: #faf3e7;
+    z-index: 2;
+  }
+
+  /* Action buttons in table */
+  .edit-stock-btn,
+  .delete-product-btn {
+    padding: 4px 10px;
+    font-size: 0.7rem;
+    margin: 2px;
+  }
+
+  /* Stock input field */
+  .stock-input {
+    width: 60px;
+    padding: 4px;
+    font-size: 0.75rem;
+  }
+
+  /* Profit card */
+  .profit-card {
+    padding: 1.25rem;
+    border-radius: 20px;
+  }
+
+  .profit-amount {
+    font-size: 2.2rem;
+  }
+
+  .sales-item {
+    font-size: 0.85rem;
+    flex-wrap: wrap;
+    gap: 0.25rem;
+  }
+
+  .sales-item span:first-child {
+    flex: 1;
+  }
+
+  /* Stats cards */
+  .seller-stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+  }
+
+  .stat-card {
+    padding: 1rem;
+  }
+
+  .stat-card .stat-number {
+    font-size: 1.5rem;
+  }
+
+  .stat-card .stat-label {
+    font-size: 0.75rem;
+  }
+
+  /* General button adjustments */
+  .btn-primary {
+    width: 100%;
+    padding: 12px;
+    font-size: 1rem;
+  }
+}
+
+/* ============================================
+   SMALL PHONES (max-width: 480px)
+   ============================================ */
+
+@media (max-width: 480px) {
+  .sidebar ul {
+    gap: 0.25rem;
+  }
+
+  .sidebar ul li {
+    min-width: 65px;
+  }
+
+  .sidebar ul li a {
+    font-size: 0.6rem;
+    padding: 0.4rem 0.2rem;
+  }
+
+  .sidebar ul li a img {
+    width: 18px;
+    height: 18px;
+  }
+
+  .dashboard-main {
+    padding: 0.75rem;
+  }
+
+  .product-form-card {
+    padding: 1rem;
+  }
+
+  .form-group {
+    margin-bottom: 0.9rem;
+  }
+
+  .form-group label {
+    font-size: 0.85rem;
+  }
+
+  .stock-table th,
+  .stock-table td {
+    padding: 8px 6px;
+    font-size: 0.7rem;
+  }
+
+  .edit-stock-btn,
+  .delete-product-btn {
+    padding: 3px 8px;
+    font-size: 0.65rem;
+  }
+
+  .profit-amount {
+    font-size: 1.8rem;
+  }
+
+  .seller-stats-grid {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+
+  .stat-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: left;
+    padding: 0.75rem 1rem;
+  }
+
+  .stat-card .stat-number {
+    margin: 0;
+    font-size: 1.3rem;
+  }
+
+  .stat-card .stat-label {
+    font-size: 0.8rem;
+  }
+}
+
+/* ============================================
+   TABLET PORTRAIT (769px - 1024px)
+   ============================================ */
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .sidebar {
+    width: 220px;
+  }
+
+  .sidebar ul li a {
+    padding: 10px 12px;
+    font-size: 0.85rem;
+  }
+
+  .dashboard-main {
+    padding: 1.5rem;
+  }
+
+  .seller-stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ============================================
+   ADDITIONAL FIXES FOR BETTER MOBILE TOUCH
+   ============================================ */
+
+/* Improve touch targets on mobile */
+@media (max-width: 768px) {
+  button,
+  .edit-stock-btn,
+  .delete-product-btn,
+  .btn-primary,
+  .sidebar ul li a {
+    min-height: 44px; /* Apple's recommended minimum touch target size */
+  }
+
+  .sidebar ul li a {
+    min-height: auto;
+  }
+
+  .edit-stock-btn,
+  .delete-product-btn {
+    min-height: 32px;
+  }
+
+  /* Prevent horizontal overflow */
+  body {
+    overflow-x: hidden;
+    width: 100%;
+  }
+
+  .dashboard-wrapper {
+    overflow-x: hidden;
+  }
+
+  /* Better spacing for forms */
+  input[type="text"],
+  input[type="email"],
+  input[type="number"],
+  select,
+  textarea {
+    font-size: 16px; /* Prevents zoom on focus */
+  }
+
+  /* Loading and empty states */
+  .empty-state {
+    padding: 2rem 1rem;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .sidebar.collapsed ul {
+    display: none;
+  }
+  .sidebar .menu-toggle {
+    display: block;
+    text-align: center;
+    cursor: pointer;
+  }
+}
