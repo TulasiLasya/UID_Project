@@ -45,7 +45,7 @@ const sampleProducts = [
   {
     id: 5,
     name: "Pen Set (5 pcs)",
-    category: "stationery",
+    category: "stationary",
     price: 49,
     stock: 100,
     description: "Smooth writing",
