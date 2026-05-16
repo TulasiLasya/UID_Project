@@ -5,7 +5,7 @@ const sampleProducts = [
   {
     id: 1,
     name: "Premium Notebook",
-    category: "stationery",
+    category: "stationary",
     price: 99,
     stock: 50,
     description: "200 pages, hardcover",
