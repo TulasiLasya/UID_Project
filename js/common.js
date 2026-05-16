@@ -1,6 +1,78 @@
 // ========== COMMON UTILITIES FOR STUDENT ESSENTIALS STORE ==========
 
+// ---------- ASSET PATH HELPER ----------
+// Resolves the correct assets folder path regardless of which page we're on
+function getAssetPath(filename) {
+  const base = window.location.pathname.includes("/pages/")
+    ? "../assets/"
+    : "assets/";
+  return base + filename;
+}
 
+// ---------- PRODUCTS DATABASE (sample) ----------
+// Store only filenames in the image field — paths are resolved at render time
+const sampleProducts = [
+  {
+    id: 1,
+    name: "Premium Notebook",
+    category: "stationary",
+    price: 99,
+    stock: 50,
+    description: "200 pages, hardcover",
+    image: "notebook.png",
+    seller: "seller@example.com",
+  },
+  {
+    id: 2,
+    name: "Wireless Mouse",
+    category: "gadgets",
+    price: 499,
+    stock: 20,
+    description: "Ergonomic, 2.4GHz",
+    image: "wirelessMouse.png",
+    seller: "seller@example.com",
+  },
+  {
+    id: 3,
+    name: "Laptop Stand",
+    category: "accessories",
+    price: 799,
+    stock: 15,
+    description: "Aluminum foldable",
+    image: "laptopStand.png",
+    seller: "seller@example.com",
+  },
+  {
+    id: 4,
+    name: "Calculus Textbook",
+    category: "study",
+    price: 450,
+    stock: 10,
+    description: "For engineering students",
+    image: "calculus.png",
+    seller: "seller@example.com",
+  },
+  {
+    id: 5,
+    name: "Pen Set (5 pcs)",
+    category: "stationary",
+    price: 49,
+    stock: 100,
+    description: "Smooth writing",
+    image: "penSet.png",
+    seller: "seller@example.com",
+  },
+  {
+    id: 6,
+    name: "USB-C Hub",
+    category: "gadgets",
+    price: 1299,
+    stock: 8,
+    description: "7-in-1 adapter",
+    image: "usbC.png",
+    seller: "seller@example.com",
+  },
+];
 // Load products from localStorage or use sample
 let products = JSON.parse(localStorage.getItem("products")) || sampleProducts;
 
@@ -202,7 +274,7 @@ function renderProductGrid(category = "all") {
     .map(
       (product) => `
     <div class="product-card">
-      <img src="${product.image}" alt="${product.name}" style="object-fit: contain">
+      <img src="${getAssetPath(product.image)}" alt="${product.name}" style="object-fit: contain">
       <div class="product-info">
         <div class="product-title">${product.name}</div>
         <div class="product-price">₹${product.price}</div>
@@ -255,7 +327,7 @@ function setupSearch() {
         .map(
           (product) => `
         <div class="product-card">
-          <img src="${product.image}" alt="${product.name}">
+          <img src="${getAssetPath(product.image)}" alt="${product.name}">
           <div class="product-info">
             <div class="product-title">${product.name}</div>
             <div class="product-price">₹${product.price}</div>
@@ -309,6 +381,27 @@ function highlightSidebarActiveLink() {
 document.addEventListener("DOMContentLoaded", () => {
   highlightSidebarActiveLink();
 });
+
+// ------------------------------------------------------------
+// MIGRATE OLD LOCALSTORAGE: strip full paths → filenames only
+// e.g. "assets/notebook.png" or "../assets/notebook.png" → "notebook.png"
+// ------------------------------------------------------------
+(function migrateProductImagePaths() {
+  const stored = JSON.parse(localStorage.getItem("products"));
+  if (!stored) return;
+  let changed = false;
+  stored.forEach((p) => {
+    if (p.image && p.image.includes("/")) {
+      p.image = p.image.split("/").pop(); // keep only the filename
+      changed = true;
+    }
+  });
+  if (changed) {
+    localStorage.setItem("products", JSON.stringify(stored));
+    products = stored; // sync in-memory array too
+    console.log("Migrated product image paths to filenames only.");
+  }
+})();
 
 // ------------------------------------------------------------
 // INITIALIZE LOCALSTORAGE WITH SAMPLE PRODUCTS IF EMPTY
