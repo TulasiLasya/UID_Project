@@ -3,55 +3,6 @@
 let currentFilterCategory = "all";
 let currentPriceRange = "all";
 
-function renderDashboardProducts() {
-  const grid = document.getElementById("dashboardProductGrid");
-  if (!grid) return;
-
-  let filtered = [...products];
-
-  if (currentFilterCategory !== "all") {
-    filtered = filtered.filter((p) => p.category === currentFilterCategory);
-  }
-
-  if (currentPriceRange !== "all") {
-    if (currentPriceRange === "1000+") {
-      filtered = filtered.filter((p) => p.price >= 1000);
-    } else {
-      const [min, max] = currentPriceRange.split("-").map(Number);
-      filtered = filtered.filter((p) => p.price >= min && p.price <= max);
-    }
-  }
-
-  if (filtered.length === 0) {
-    grid.innerHTML = "<p>No products found in this range.</p>";
-    return;
-  }
-
-  grid.innerHTML = filtered
-    .map(
-      (product) => `
-    <div class="product-card">
-      <img src="${product.image}" alt="${product.name}" style="object-fit: contain ">
-      <div class="product-info">
-        <div class="product-title">${product.name}</div>
-        <div class="product-price">₹${product.price}</div>
-        <div class="product-desc">${product.description}</div>
-        <button class="add-to-cart-dash" data-id="${product.id}">Add to Cart</button>
-      </div>
-    </div>
-  `,
-    )
-    .join("");
-
-  document.querySelectorAll(".add-to-cart-dash").forEach((btn) => {
-    btn.addEventListener("click", (e) => {
-      const id = parseInt(btn.dataset.id);
-      addToCart(id, 1);
-      updateCartPreview();
-      alert("Added to cart!");
-    });
-  });
-}
 
 function renderMyOrders() {
   const container = document.getElementById("myOrdersList");
