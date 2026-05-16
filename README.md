@@ -36,8 +36,32 @@ It includes pages for login, registration, shopping cart, billing, profile manag
 [Website Link](https://tulasilasya.github.io/UID_Project/)
 ## OUTPUT
 ### Default Page
-![Default Page](Output/DefaultPage.png)
-### Buyer Dashboard
+![Default Page](Output/Default.png)
+### Login Page
+![Login Page](Output/login.png)
+### Register Page
+![Register Page](Output/register.png)
+### Reset Password Page
+![Reset Password Page](Output/resetpassword.png)
+### About Us Page
+![About Us Page](Output/aboutus.png)
+### Buyer Dashboard Page
 ![Buyer Dashboard](Output/BuyerDashboard.png)
+### Buyer Cart Page
+![Buyer Cart Page](Output/buyer-cart.png)
+### Buyer Billing Page
+![ Buyer Billing Page](Output/buyer-billing.png)
+### Buyer Profile Page 
+![Buyer Profile Page](Output/buyer-profile.png)
+### Buyer feedback Page 
+![Buyer feedback Page ](Output/buyer-feedback.png)
+### Buyer query Page
+![Buyer query Page](Output/buyer-query.png)
+### Seller Profile Page 
+![Seller Profile Page ](Output/seller-profile.png)
 ### Seller Add Item Page
 ![Seller add item ](Output/seller-addItem.png)
+### Seller Manage Stocks Page
+![Seller Manage Stocks Page](Output/seller-managestock.png)
+### seller Revenue Page
+![Seller Revenue page](Output/seller-revenue.png)
