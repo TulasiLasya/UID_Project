@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Buyer Dashboard</title>
+    <title>Buyer Dashboard | Student Essentials</title>
     <link rel="stylesheet" href="../css/common.css" />
     <link rel="stylesheet" href="../css/dashboard.css" />
     <link rel="stylesheet" href="../css/dashboard-shop.css" />
@@ -11,7 +11,6 @@
     <!-- REACT & REACT DOM -->
     <script src="https://cdn.jsdelivr.net/npm/react@18.2.0/umd/react.development.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/react-dom@18.2.0/umd/react-dom.development.js"></script>
-    <!-- Babel for JSX translation in the browser -->
     <script src="https://cdn.jsdelivr.net/npm/@babel/standalone/babel.min.js"></script>
   </head>
   <body>
@@ -19,20 +18,24 @@
       <!-- Sidebar -->
       <aside class="sidebar">
         <h3>
-          <img src="../assets/more.png" width="30" height="30" />
-          <span>Menu</span>
+          <img src="../assets/more.png" width="30" height="30" /><span
+            >Menu</span
+          >
         </h3>
         <ul>
           <li>
             <a href="dashboard.html"
-              ><img src="../assets/storefront.png" width="30" height="30" />
-              <span>Shop</span></a
+              ><img
+                src="../assets/storefront.png"
+                width="30"
+                height="30"
+              /><span>Shop</span></a
             >
           </li>
           <li>
             <a href="profile.html"
-              ><img src="../assets/user.png" width="30" height="30" /><span>
-                Profile</span
+              ><img src="../assets/user.png" width="30" height="30" /><span
+                >Profile</span
               ></a
             >
           </li>
@@ -47,28 +50,30 @@
           </li>
           <li>
             <a href="billing.html"
-              ><img src="../assets/bill.png" width="30" height="30" /><span>
-                Billing</span
+              ><img src="../assets/bill.png" width="30" height="30" /><span
+                >Billing</span
               ></a
             >
           </li>
           <li>
-            <a href="feedback.html">
-              <img src="../assets/review.png" width="30" height="30" />
-              <span>Feedback</span></a
+            <a href="feedback.html"
+              ><img src="../assets/review.png" width="30" height="30" /><span
+                >Feedback</span
+              ></a
             >
           </li>
           <li>
-            <a href="query.html">
-              <img src="../assets/question.png" width="30" height="30" /><span
+            <a href="query.html"
+              ><img src="../assets/question.png" width="30" height="30" /><span
                 >Query</span
               ></a
             >
           </li>
           <li>
-            <a href="../index.html" id="logoutBtn"
-              ><img src="../assets/logout.png" width="30" height="30" />
-              <span>Logout</span></a
+            <a href="#" id="logoutBtn"
+              ><img src="../assets/logout.png" width="30" height="30" /><span
+                >Logout</span
+              ></a
             >
           </li>
         </ul>
@@ -83,24 +88,100 @@
 
         <!-- Mini Cart Summary -->
         <div class="cart-summary-card">
-          <span>
-            Cart items: <strong id="cartItemCount">0</strong> | Total: ₹<strong
-              id="cartTotalPreview"
-              >0</strong
-            ></span
+          <span
+            >🛒 Cart items: <strong id="cartItemCount">0</strong> | Total:
+            ₹<strong id="cartTotalPreview">0</strong></span
           >
           <a href="cart.html">View Cart & Checkout</a>
         </div>
 
-        <!-- Filters -->
-
         <!-- React will inject filters + product grid here -->
         <div id="react-product-section"></div>
+
+        <!-- My Orders Section -->
+        <div class="orders-section">
+          <h3>📦 My Orders</h3>
+          <div id="myOrdersList"></div>
+        </div>
       </main>
     </div>
 
     <script src="../js/common.js"></script>
-    <script src="../js/dashboard.js"></script>
+    <script>
+      // Simple vanilla JS for cart preview, orders, and logout (no product grid conflict)
+      function updateCartPreview() {
+        const count = typeof getCartCount === "function" ? getCartCount() : 0;
+        const total = typeof getCartTotal === "function" ? getCartTotal() : 0;
+        const countElem = document.getElementById("cartItemCount");
+        const totalElem = document.getElementById("cartTotalPreview");
+        if (countElem) countElem.innerText = count;
+        if (totalElem) totalElem.innerText = total;
+      }
+
+      function renderMyOrders() {
+        const container = document.getElementById("myOrdersList");
+        if (!container) return;
+        const currentUser =
+          typeof getCurrentUser === "function" ? getCurrentUser() : null;
+        if (!currentUser) {
+          container.innerHTML = "<p>Please login to see orders.</p>";
+          return;
+        }
+        const userOrders =
+          typeof getUserOrders === "function"
+            ? getUserOrders(currentUser.email)
+            : [];
+        if (userOrders.length === 0) {
+          container.innerHTML =
+            "<p>You haven't placed any orders yet. Start shopping above!</p>";
+          return;
+        }
+        container.innerHTML = userOrders
+          .map(
+            (order) => `
+        <div class="order-item">
+          <div class="order-header">
+            <span>Order #${order.id}</span>
+            <span>${new Date(order.date).toLocaleDateString()}</span>
+            <span class="order-status">${order.status}</span>
+          </div>
+          <div class="order-details">Total: ₹${order.total} | Items: ${order.items.length}</div>
+          <div class="order-product-list">
+            ${order.items.map((item) => `<div>• ${item.name} x ${item.quantity} = ₹${item.price * item.quantity}</div>`).join("")}
+          </div>
+        </div>
+      `,
+          )
+          .join("");
+      }
+
+      document.addEventListener("DOMContentLoaded", () => {
+        const user =
+          typeof getCurrentUser === "function" ? getCurrentUser() : null;
+        if (!user) {
+          alert("Please login to access dashboard");
+          window.location.href = "login.html";
+          return;
+        }
+        document.getElementById("userGreeting").innerText =
+          `Hello, ${user.name}! Start shopping.`;
+        updateCartPreview();
+        renderMyOrders();
+
+        // Logout button
+        const logoutBtn = document.getElementById("logoutBtn");
+        if (logoutBtn) {
+          logoutBtn.addEventListener("click", (e) => {
+            e.preventDefault();
+            if (typeof logout === "function") logout();
+            window.location.href = "../index.html";
+          });
+        }
+      });
+
+      window.updateCartPreview = updateCartPreview;
+    </script>
+
     <script type="text/babel">
       const { useState, useEffect } = React;
 
@@ -109,35 +190,25 @@
         const [category, setCategory] = useState("all");
         const [priceRange, setPriceRange] = useState("all");
 
-        // Function to refresh products from localStorage
         const refreshProducts = () => {
           const stored = JSON.parse(localStorage.getItem("products")) || [];
-          console.log("Refreshing products:", stored.length);
+          console.log("Products loaded:", stored.length);
           setProducts(stored);
         };
 
-        // Load initial products + set up listeners for real‑time sync
         useEffect(() => {
           refreshProducts();
-
-          // Listen for changes in other tabs/windows (cross‑tab sync)
           const handleStorage = (e) => {
-            if (e.key === "products") {
-              refreshProducts();
-            }
+            if (e.key === "products") refreshProducts();
           };
           window.addEventListener("storage", handleStorage);
-
-          // Listen for custom event from common.js (same‑tab sync)
           window.addEventListener("products-changed", refreshProducts);
-
           return () => {
             window.removeEventListener("storage", handleStorage);
             window.removeEventListener("products-changed", refreshProducts);
           };
         }, []);
 
-        // Filter products based on category and price
         const filteredProducts = products.filter((p) => {
           if (category !== "all" && p.category !== category) return false;
           if (priceRange === "1000+") return p.price >= 1000;
@@ -149,15 +220,12 @@
         });
 
         const handleAddToCart = (product) => {
-          // Prevent adding if out of stock
           if (product.stock <= 0) {
             alert("Out of stock!");
             return;
           }
           if (typeof window.addToCart === "function") {
             window.addToCart(product.id, 1);
-            if (typeof window.updateCartCountDisplay === "function")
-              window.updateCartCountDisplay();
             if (typeof window.updateCartPreview === "function")
               window.updateCartPreview();
             alert("Added to cart!");
@@ -169,7 +237,6 @@
 
         return (
           <div>
-            {/* Filter UI */}
             <div className="filter-section">
               <div className="filter-group">
                 <label>Category:</label>
@@ -178,7 +245,7 @@
                   onChange={(e) => setCategory(e.target.value)}
                 >
                   <option value="all">All</option>
-                  <option value="stationary">Stationary</option>
+                  <option value="stationery">Stationery</option>
                   <option value="gadgets">Gadgets</option>
                   <option value="accessories">Accessories</option>
                   <option value="study">Study Materials</option>
@@ -208,7 +275,6 @@
               </button>
             </div>
 
-            {/* Product Grid */}
             <div className="dashboard-products">
               <h3>All Products</h3>
               <div className="product-grid">
@@ -221,9 +287,13 @@
                         src={product.image}
                         alt={product.name}
                         onError={(e) => {
-                          e.target.src = "https://picsum.photos/id/1/300/200";
+                          e.target.src = "https://picsum.photos/id/20/300/200";
                         }}
-                        style={{ objectFit: "contain" }}
+                        style={{
+                          width: "100%",
+                          height: "180px",
+                          objectFit: "cover",
+                        }}
                       />
                       <div className="product-info">
                         <div className="product-title">{product.name}</div>
@@ -266,14 +336,9 @@
         );
       }
 
-      // Render using createRoot (React 18)
       const container = document.getElementById("react-product-section");
       if (container) {
-        if (ReactDOM.createRoot) {
-          ReactDOM.createRoot(container).render(<ProductSection />);
-        } else {
-          ReactDOM.render(<ProductSection />, container);
-        }
+        ReactDOM.createRoot(container).render(<ProductSection />);
       }
     </script>
   </body>

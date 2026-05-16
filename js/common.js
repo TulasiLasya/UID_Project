@@ -5,11 +5,11 @@ const sampleProducts = [
   {
     id: 1,
     name: "Premium Notebook",
-    category: "stationary",
+    category: "stationery",
     price: 99,
     stock: 50,
     description: "200 pages, hardcover",
-    image: "assets/notebook.png",
+    image: "../assets/notebook.png",
     seller: "seller@example.com",
   },
   {
@@ -19,7 +19,7 @@ const sampleProducts = [
     price: 499,
     stock: 20,
     description: "Ergonomic, 2.4GHz",
-    image: "assets/wirelessMouse.png",
+    image: "../assets/wirelessMouse.png",
     seller: "seller@example.com",
   },
   {
@@ -29,7 +29,7 @@ const sampleProducts = [
     price: 799,
     stock: 15,
     description: "Aluminum foldable",
-    image: "assets/laptopStand.png",
+    image: "../assets/laptopStand.png",
     seller: "seller@example.com",
   },
   {
@@ -39,17 +39,17 @@ const sampleProducts = [
     price: 450,
     stock: 10,
     description: "For engineering students",
-    image: "assets/calculus.png",
+    image: "../assets/calculus.png",
     seller: "seller@example.com",
   },
   {
     id: 5,
     name: "Pen Set (5 pcs)",
-    category: "stationary",
+    category: "stationery",
     price: 49,
     stock: 100,
     description: "Smooth writing",
-    image: "assets/penSet.png",
+    image: "../assets/penSet.png",
     seller: "seller@example.com",
   },
   {
@@ -59,7 +59,7 @@ const sampleProducts = [
     price: 1299,
     stock: 8,
     description: "7-in-1 adapter",
-    image: "assets/usbC.png",
+    image: "../assets/usbC.png",
     seller: "seller@example.com",
   },
 ];
