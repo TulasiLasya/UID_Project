@@ -83,9 +83,11 @@
 
         <!-- Mini Cart Summary -->
         <div class="cart-summary-card">
-          <span
-            >🛒 Cart items: <strong id="cartItemCount">0</strong> | Total:
-            ₹<strong id="cartTotalPreview">0</strong></span
+          <span>
+            Cart items: <strong id="cartItemCount">0</strong> | Total: ₹<strong
+              id="cartTotalPreview"
+              >0</strong
+            ></span
           >
           <a href="cart.html">View Cart & Checkout</a>
         </div>
@@ -215,13 +217,13 @@
                 ) : (
                   filteredProducts.map((product) => (
                     <div key={product.id} className="product-card">
-                     
                       <img
                         src={product.image}
                         alt={product.name}
                         onError={(e) => {
                           e.target.src = "https://picsum.photos/id/1/300/200";
                         }}
+                        style={{ objectFit: "contain" }}
                       />
                       <div className="product-info">
                         <div className="product-title">{product.name}</div>
@@ -240,11 +242,17 @@
                         <div className="product-desc">
                           {product.description}
                         </div>
-                       <button
+                        <button
                           className="add-to-cart-dash btn-primary"
                           onClick={() => handleAddToCart(product)}
                           disabled={product.stock === 0}
-                          style={{ opacity: product.stock === 0 ? 0.5 : 1, cursor: product.stock === 0 ? "not-allowed" : "pointer", marginTop: "0.5rem", width: "100%" }}
+                          style={{
+                            opacity: product.stock === 0 ? 0.5 : 1,
+                            cursor:
+                              product.stock === 0 ? "not-allowed" : "pointer",
+                            marginTop: "0.5rem",
+                            width: "100%",
+                          }}
                         >
                           {product.stock > 0 ? "Add to Cart" : "Out of Stock"}
                         </button>

@@ -36,7 +36,8 @@ It includes pages for login, registration, shopping cart, billing, profile manag
 [Website Link](https://tulasilasya.github.io/UID_Project/)
 ## OUTPUT
 ### Default Page
-![Default Page](Output/DefaultPage.png)
+![Default Page](Output/Default.png)
 ### Buyer Dashboard
-![Buyer Dashboard](Output/BuyerDefaultPage.png)
-
+![Buyer Dashboard](Output/BuyerDashboard.png)
+### Seller Add Item Page
+![Seller add item ](Output/seller-addItem.png)
