@@ -1,68 +1,6 @@
 // ========== COMMON UTILITIES FOR STUDENT ESSENTIALS STORE ==========
 
-// ---------- PRODUCTS DATABASE (sample) ----------
-const sampleProducts = [
-  {
-    id: 1,
-    name: "Premium Notebook",
-    category: "stationery",
-    price: 99,
-    stock: 50,
-    description: "200 pages, hardcover",
-    image: "assets/notebook.png",
-    seller: "seller@example.com",
-  },
-  {
-    id: 2,
-    name: "Wireless Mouse",
-    category: "gadgets",
-    price: 499,
-    stock: 20,
-    description: "Ergonomic, 2.4GHz",
-    image: "assets/wirelessMouse.png",
-    seller: "seller@example.com",
-  },
-  {
-    id: 3,
-    name: "Laptop Stand",
-    category: "accessories",
-    price: 799,
-    stock: 15,
-    description: "Aluminum foldable",
-    image: "assets/laptopStand.png",
-    seller: "seller@example.com",
-  },
-  {
-    id: 4,
-    name: "Calculus Textbook",
-    category: "study",
-    price: 450,
-    stock: 10,
-    description: "For engineering students",
-    image: "assets/calculus.png",
-    seller: "seller@example.com",
-  },
-  {
-    id: 5,
-    name: "Pen Set (5 pcs)",
-    category: "stationery",
-    price: 49,
-    stock: 100,
-    description: "Smooth writing",
-    image: "assets/penSet.png",
-    seller: "seller@example.com",
-  },
-  {
-    id: 6,
-    name: "USB-C Hub",
-    category: "gadgets",
-    price: 1299,
-    stock: 8,
-    description: "7-in-1 adapter",
-    image: "assets/usbC.png",
-    seller: "seller@example.com",
-  },
-];
+
 // Load products from localStorage or use sample
 let products = JSON.parse(localStorage.getItem("products")) || sampleProducts;
 
